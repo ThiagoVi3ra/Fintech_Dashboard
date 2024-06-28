@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Aliado Financeiro</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="./images/logo.png" alt="Aliado Financeiro" height="100">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sair</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="d-flex" id="wrapper">
+        <div class="bg-dark text-white" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center py-4">
+                <img src="./images/circle (1).png" alt="Usuario" height="60">
+                <h5 class="mt-2">User_Desconhecido</h5>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-user-circle mr-2"></i>Usuário
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-credit-card mr-2"></i>Conta
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-money-check-alt mr-2"></i>PIX
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-life-ring mr-2"></i>Suporte
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-cog mr-2"></i>Configurações
+                </a>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid mt-4">
+                <button class="btn btn-purple mb-3" id="menu-toggle">
+                    <i class="fas fa-bars"></i> Menu
+                </button>
+                <h1 class="text-purple">Dashboard</h1>
+                <p class="text-muted">Bem-vindo ao painel de controle do Aliado Financeiro!</p>
+
+                <!-- Cards Resumo -->
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card text-white bg-purple">
+                            <div class="card-body">
+                                <div class="card-title">Saldo Atual</div>
+                                <h3 class="card-text">R$ 50.000</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body">
+                                <div class="card-title">Despesas Mensais</div>
+                                <h3 class="card-text">R$ 10.000</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card text-white bg-purple">
+                            <div class="card-body">
+                                <div class="card-title">Receitas Mensais</div>
+                                <h3 class="card-text">R$ 15.000</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body">
+                                <div class="card-title">Investimentos</div>
+                                <h3 class="card-text">R$ 100.000</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficos (Espaço reservado para futuras integrações com Chart.js ou similar) -->
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card bg-light">
+                            <div class="card-header bg-purple text-white">
+                                <i class="fas fa-chart-line"></i> Desempenho Mensal
+                            </div>
+                            <div class="card-body">
+                                <canvas id="monthlyPerformanceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card bg-light">
+                            <div class="card-header bg-purple text-white">
+                                <i class="fas fa-chart-pie"></i> Distribuição de Gastos
+                            </div>
+                            <div class="card-body">
+                                <canvas id="expensesDistributionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js e jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Script para o menu toggle -->
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
+    <!-- Scripts para os gráficos -->
+    <script>
+    // Gráfico de Desempenho Mensal
+    var ctx1 = document.getElementById('monthlyPerformanceChart').getContext('2d');
+    var monthlyPerformanceChart = new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            datasets: [{
+                label: 'Despesas',
+                data: [1200, 1900, 3000, 5000, 2000, 3000, 4000, 2500, 2700, 3600, 3300, 5000],
+                borderColor: '#ff6b6b',
+                backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                fill: true,
+                tension: 0.4
+            }, {
+                label: 'Receitas',
+                data: [2500, 2700, 3500, 4000, 4500, 5000, 6000, 5800, 6200, 7200, 6900, 8200],
+                borderColor: '#4caf50',
+                backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += `R$ ${context.parsed.y}`;
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Valores em R$'
+                    }
+                }
+            }
+        }
+    });
+
+    // Gráfico de Distribuição de Gastos
+    var ctx2 = document.getElementById('expensesDistributionChart').getContext('2d');
+    var expensesDistributionChart = new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+            labels: ['Alimentação', 'Transporte', 'Lazer', 'Saúde', 'Educação', 'Outros'],
+            datasets: [{
+                label: 'Distribuição de Gastos',
+                data: [2000, 1500, 1000, 1200, 800, 500],
+                backgroundColor: ['#ff6b6b', '#4caf50', '#ffa726', '#29b6f6', '#ab47bc', '#ffeb3b'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.raw !== null) {
+                                label += `R$ ${context.raw}`;
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+    </script>
+</body>
+</html>

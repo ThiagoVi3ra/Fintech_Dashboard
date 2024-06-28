@@ -1,0 +1,162 @@
+/* Estilos CSS */
+
+/* Corpo da página */
+body {
+    background-color: #f8f9fa; /* Cor de fundo suave */
+    font-family: 'Arial', sans-serif; /* Fonte padrão */
+    padding-top: 56px; /* Espaçamento para evitar sobreposição com a navbar */
+}
+
+/* Estilos para os cards */
+.card {
+    margin-bottom: 20px; /* Espaçamento entre os cards */
+    border-radius: 10px; /* Borda arredondada nos cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave nos cards */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animação */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Elevar o card ao passar o mouse */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Aumentar a sombra ao passar o mouse */
+}
+
+/* Título dos cards */
+.card-title {
+    font-size: 1.25rem; /* Tamanho do título */
+    font-weight: bold; /* Negrito no título */
+}
+
+/* Texto em roxo */
+.text-purple {
+    color: #6f42c1; /* Cor roxa */
+}
+
+/* Fundo roxo para os cards */
+.bg-purple {
+    background-color: #6f42c1 !important; /* Cor de fundo roxa */
+}
+
+/* Sidebar */
+#sidebar-wrapper {
+    border-right: 1px solid #dee2e6; /* Borda à direita do sidebar */
+    height: 100vh; /* Altura total */
+    position: fixed; /* Fixar na posição */
+    top: 0; /* Alinhamento ao topo */
+    left: 0; /* Alinhamento à esquerda */
+    z-index: 1000; /* Aumentar o z-index para sobrepor outros elementos */
+    overflow-y: auto; /* Rolagem vertical automática */
+    overflow-x: hidden; /* Ocultar rolagem horizontal */
+    background-color: #343a40; /* Cor de fundo do sidebar */
+    color: #fff; /* Cor do texto */
+    transition: all 0.3s ease; /* Transição suave */
+    width: 250px; /* Largura do sidebar */
+}
+
+/* Cabeçalho do sidebar */
+#sidebar-wrapper .sidebar-heading {
+    padding: 10px 0; /* Reduzir o preenchimento do cabeçalho */
+    text-align: center; /* Alinhamento central */
+    margin-bottom: 20px; /* Aumentar margem inferior para mais espaço abaixo do logo */
+}
+
+/* Ajuste da posição do logo */
+#sidebar-wrapper .sidebar-heading img {
+    margin-top: 50px; /* Adiciona espaço acima da logo */
+}
+
+#sidebar-wrapper .sidebar-heading h5 {
+    font-size: 1rem; /* Ajustar o tamanho da fonte */
+    margin-top: 5px; /* Adicionar um pouco de margem superior para espaço entre logo e texto */
+}
+
+/* Itens da lista no sidebar */
+#sidebar-wrapper .list-group-item {
+    border: none; /* Sem borda nos itens */
+    padding: 15px 20px; /* Preenchimento dos itens */
+    font-size: 1.1rem; /* Tamanho da fonte */
+    transition: background-color 0.3s ease; /* Transição de cor de fundo */
+}
+
+#sidebar-wrapper .list-group-item:hover {
+    background-color: #495057; /* Cor de fundo ao passar o mouse */
+}
+
+/* Item ativo no sidebar */
+#sidebar-wrapper .list-group-item.active {
+    background-color: #6f42c1; /* Cor de fundo roxa para item ativo */
+    border-color: #6f42c1; /* Cor da borda para item ativo */
+}
+
+/* Conteúdo da página */
+#page-content-wrapper {
+    margin-left: 250px; /* Largura do sidebar */
+    width: calc(100% - 250px); /* Largura total menos a largura do sidebar */
+    transition: all 0.3s ease; /* Transição suave */
+    padding: 20px; /* Preenchimento */
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -250px; /* Esconder o sidebar ao colapsar */
+}
+
+#wrapper.toggled #page-content-wrapper {
+    margin-left: 0; /* Remover margem ao colapsar */
+    width: 100%; /* Expandir para a largura total */
+}
+
+/* Botão de toggle do menu */
+#menu-toggle {
+    background-color: #6f42c1; /* Cor de fundo roxa */
+    color: #fff; /* Cor do texto branco */
+    border: none; /* Sem borda */
+    padding: 10px 15px; /* Preenchimento */
+    border-radius: 5px; /* Borda arredondada */
+    transition: background-color 0.3s ease; /* Transição de cor de fundo */
+}
+
+#menu-toggle:hover {
+    background-color: #5a32a1; /* Cor de fundo ao passar o mouse */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #343a40; /* Cor de fundo da navbar */
+    border-bottom: 1px solid #dee2e6; /* Borda inferior */
+    position: fixed; /* Fixar na posição */
+    width: 100%; /* Largura total */
+    top: 0; /* Alinhamento ao topo */
+    z-index: 1001; /* Ajuste de z-index para garantir que fique acima da sidebar */
+    transition: background-color 0.3s ease; /* Transição de cor de fundo */
+}
+
+.navbar-brand img {
+    height: 40px; /* Altura do logo */
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff; /* Cor do texto branco */
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #d1d1d1; /* Cor do texto ao passar o mouse */
+}
+
+/* Avatar do usuário */
+.nav-item-user .user-avatar {
+    position: absolute; /* Posição absoluta */
+    top: -8px; /* Ajuste vertical */
+    left: 12px; /* Ajuste horizontal */
+    background-color: #6f42c1; /* Cor de fundo roxa */
+    border: 2px solid #fff; /* Borda branca */
+    border-radius: 50%; /* Borda circular */
+    width: 24px; /* Largura */
+    height: 24px; /* Altura */
+    font-size: 14px; /* Tamanho da fonte */
+    text-align: center; /* Alinhamento central */
+    line-height: 20px; /* Altura da linha */
+}
+
+/* Estilos para gráficos */
+.card canvas {
+    max-width: 100%; /* Largura máxima do gráfico */
+}
